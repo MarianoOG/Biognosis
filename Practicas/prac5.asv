@@ -1,0 +1,34 @@
+clc,clear all, close all
+
+% Introduccion de variables
+C1=0.47e-6;
+C2=0.25e-6;
+C3=0.47e-6;
+R12=3.3e6;
+R23=10e6;
+R13=3.3e6;
+Rf1=1.2e6;
+Rf2=2.2e6;
+Rf3=2.2e6;
+k=1;
+
+% Solucion al sistema ecuaciones diferenciales:
+[Vt1,Vt2,Vt3]=dsolve(...
+    'Dv1=((v2-v1)/R12+(v3-v1)/R13-(1/R12+1/R13+1/Rf1)*v1)/C1',...
+    'Dv2=((v1-v2)/R12+(v3-v2)/R23-(1/R12+1/R23+1/Rf2)*v2)/C2',...
+    'Dv3=((v1-v3)/R13+(v2-v3)/R23-(1/R13+1/R23+1/Rf3)*v3)/C3',...
+    'v1(0)=k','v2(0)=0','v3(0)=0');
+
+% Substitucion de valores por constantes:
+
+
+
+syms t
+
+%Graficacion de resultados:
+figure
+plot(t,V1)
+hold on
+plot(t,V2)
+plot(t,V3)
+grid on
